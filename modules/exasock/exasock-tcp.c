@@ -2214,6 +2214,8 @@ proc_check:
         {
             /* Locking failed - need to re-check with updated proc_seq and
              * recv_seq */
+            kfree(elem);
+            elem = NULL;
             recv_seq = *tcp_st_recv_seq;
             goto proc_check;
         }
